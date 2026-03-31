@@ -2,5 +2,13 @@
 
 {% block content %}
 <h2>Our Courses</h2>
-<p>Python, Django, SQL, Frontend</p>
+
+{% for course in courses %}
+<div class="card">
+    <h3>{{ course.name }}</h3>
+    <p>{{ course.description }}</p>
+    <strong>₹{{ course.price }}</strong>
+</div>
+{% endfor %}
+
 {% endblock %}

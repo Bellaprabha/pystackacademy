@@ -1,18 +1,26 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <title>PyStack Academy</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-<body>
-    <h1>PyStack Academy</h1>
 
+<body>
+
+<header>
+    <h2>PyStack Academy 🚀</h2>
     <nav>
         <a href="/">Home</a>
         <a href="/about/">About</a>
         <a href="/courses/">Courses</a>
         <a href="/login/">Login</a>
     </nav>
+</header>
 
+<div class="container">
     {% block content %}{% endblock %}
+</div>
+
 </body>
 </html>
