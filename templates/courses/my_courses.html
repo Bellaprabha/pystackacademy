@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>My Courses 🎓</h2>
+
+{% if enrollments %}
+    {% for e in enrollments %}
+        <div class="card p-3 mb-2">
+            <h5>{{ e.course.title }}</h5>
+            <p>Duration: {{ e.course.duration }}</p>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No courses enrolled yet.</p>
+{% endif %}
+
+{% endblock %}
