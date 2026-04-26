@@ -19,6 +19,7 @@ class Enrollment(models.Model):
     name = models.CharField(max_length=100)
     phone = models.CharField(max_length=10)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    enrolled_at = models.DateTimeField(auto_now_add=True)
     otp = models.CharField(max_length=6, null=True, blank=True)   # 🔥 OTP
     is_verified = models.BooleanField(default=False)
 

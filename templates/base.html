@@ -94,10 +94,15 @@
         <li class="nav-item"><a class="nav-link" href="/courses/">Courses</a></li>
 
         {% if user.is_authenticated %}
-            <li class="nav-item"><a class="nav-link" href="/my-courses/">My Courses</a></li>
-            <li class="nav-item"><a class="nav-link" href="/logout/">Logout</a></li>
+
+            <li class="nav-item"><a class="nav-link" href="/courses/my-courses/">My Courses</a></li>
+
+            <!-- ✅ ADD THIS -->
+            <li class="nav-item"><a class="nav-link" href="/payments/history/">Payments</a></li>
+
+            <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
         {% else %}
-            <li class="nav-item"><a class="nav-link" href="/login/">Login</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
         {% endif %}
       </ul>
 

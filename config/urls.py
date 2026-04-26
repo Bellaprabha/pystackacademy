@@ -19,6 +19,7 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 from django.shortcuts import render
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,8 +27,11 @@ urlpatterns = [
     path('courses/', include('courses.urls')),
     path('', include('accounts.urls')),
     path('success/', lambda request: render(request, 'core/success.html')),
+    path('payments/', include('payments.urls')),
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
-
+        
 # ✅ THEN add media settings
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

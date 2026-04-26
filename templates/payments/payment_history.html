@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Payment History</h2>
+
+{% for p in payments %}
+<div class="card p-3 mb-2">
+    <h5>{{ p.course_name }}</h5>
+    <p>Amount: ₹{{ p.amount|floatformat:2 }}</p>
+    <p>Status: {{ p.status }}</p>
+    <p>Date: {{ p.created_at }}</p>
+</div>
+{% empty %}
+<p>No payments yet</p>
+{% endfor %}
+
+{% endblock %}

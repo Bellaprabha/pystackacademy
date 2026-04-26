@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card p-5 text-center">
+    <h2 class="text-danger">❌ Payment Failed</h2>
+    <p>Something went wrong. Please try again.</p>
+
+    <!-- ✅ RETRY BUTTON -->
+    <a href="/payments/pay/{{ course_id }}/" class="btn btn-warning">
+        Retry Payment
+    </a>
+
+    <br><br>
+
+    <a href="/courses/" class="btn btn-secondary">
+        Back to Courses
+    </a>
+</div>
+
+{% endblock %}

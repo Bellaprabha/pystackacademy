@@ -9,6 +9,17 @@
 
     <p><strong>Duration:</strong> {{ course.duration }}</p>
     <p><strong>Price:</strong> ₹{{ course.price }}</p>
+    {% if user.is_authenticated %}
+        {% if course in user.enrollment_set.all %}
+            <a href="/courses/content/{{ course.id }}/" class="btn btn-success w-100 mb-3">
+                Start Learning
+            </a>
+        {% else %}
+            <a href="/payments/pay/{{ course.id }}/" class="btn btn-warning w-100 mb-3">
+                Buy Course
+            </a>
+        {% endif %}
+    {% endif %}
 
     <h4>What You Will Learn:</h4>
     <ul>
@@ -33,7 +44,7 @@
         </div>
         <div class="mb-3">
             <label>Mail ID</label>
-            <input type="text" name="name" class="form-control" required>
+            <input type="text" name="email" class="form-control" required>
         </div>
 
         <div class="mb-3">

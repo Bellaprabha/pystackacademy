@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card p-4 mx-auto" style="max-width:400px;">
+    <h3>Verify OTP</h3>
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    {% if message %}
+        <p style="color:green;">{{ message }}</p>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        
+        <input type="hidden" name="username" value="{{ username }}">
+
+        <input type="text" name="otp" placeholder="Enter OTP" class="form-control mb-3" required>
+
+        <button type="submit" class="btn btn-success w-100">Verify</button>
+    </form>
+
+    <br>
+
+    <!-- 🔁 RESEND BUTTON -->
+    <a href="{% url 'resend_otp' %}?username={{ username }}" class="btn btn-warning w-100">
+        Resend OTP
+    </a>
+    <p id="timer" style="color:orange;"></p>
+
+    <script>
+    let seconds = 30;
+    let btn = document.querySelector(".btn-warning");
+
+    btn.style.pointerEvents = "none";
+    btn.style.opacity = "0.6";
+
+    let timer = setInterval(function() {
+        document.getElementById("timer").innerText = 
+            "Resend available in " + seconds + " sec";
+
+        seconds--;
+
+        if (seconds < 0) {
+            clearInterval(timer);
+            document.getElementById("timer").innerText = "";
+
+            btn.style.pointerEvents = "auto";
+            btn.style.opacity = "1";
+        }
+    }, 1000);
+    </script>
+</div>
+
+{% endblock %}

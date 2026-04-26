@@ -10,3 +10,6 @@ class EmailOTP(models.Model):
     def generate_otp(self):
         self.otp = str(random.randint(100000, 999999))
         self.save()
+        
+    def is_expired(self):
+        return timezone.now() > self.created_at + timedelta(minutes=5)    

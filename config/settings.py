@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'core',
     'courses',
     'accounts',
+    'payments',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -131,8 +133,26 @@ MEDIA_ROOT = BASE_DIR / 'media'
 AUTH_USER_MODEL = 'auth.User'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'your_email@gmail.com'
-EMAIL_HOST_PASSWORD = 'your_app_password'
+EMAIL_HOST_USER = 'prabhakarbella8@gmail.com'
+EMAIL_HOST_PASSWORD = 'xjel raxj glof daqp'
+
+
+RAZORPAY_KEY_ID = "rzp_test_ShyprgzqXLsd2g"
+RAZORPAY_KEY_SECRET = "LRSfK7tjuMB4B5Z9GXwUZI0Z"
+
+from datetime import timedelta
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
+    'AUTH_HEADER_TYPES': ('Bearer',),
+}
