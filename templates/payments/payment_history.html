@@ -1,17 +1,49 @@
 {% extends 'base.html' %}
-
 {% block content %}
+
 <h2>Payment History</h2>
 
-{% for p in payments %}
-<div class="card p-3 mb-2">
-    <h5>{{ p.course_name }}</h5>
-    <p>Amount: ₹{{ p.amount|floatformat:2 }}</p>
-    <p>Status: {{ p.status }}</p>
-    <p>Date: {{ p.created_at }}</p>
+<!-- 🔍 FILTER -->
+<div class="mb-3">
+    <a href="?status=all" class="btn btn-secondary btn-sm">All</a>
+    <a href="?status=success" class="btn btn-success btn-sm">Success</a>
+    <a href="?status=failed" class="btn btn-danger btn-sm">Failed</a>
+</div>
+
+{% for payment in payments %}
+<div class="card p-3 mb-3 shadow">
+
+    <h5>{{ payment.course_name }}</h5>
+
+    <p><strong>Amount:</strong> ₹{{ payment.amount|floatformat:2 }}</p>
+
+    <!-- ✅ STATUS BADGE -->
+    <p>
+        <strong>Status:</strong>
+
+        {% if payment.status == "success" %}
+            <span class="badge bg-success">SUCCESS</span>
+
+        {% elif payment.status == "failed" %}
+            <span class="badge bg-danger">FAILED</span>
+
+        {% else %}
+            <span class="badge bg-warning text-dark">CREATED</span>
+        {% endif %}
+    </p>
+
+    <p><strong>Date:</strong> {{ payment.created_at|date:"d M Y, h:i A" }}</p>
+
+    <!-- 📄 DOWNLOAD INVOICE -->
+    {% if payment.status == "success" %}
+        <a href="{% url 'download_invoice' payment.id %}" class="btn btn-outline-primary btn-sm">
+            Download Invoice
+        </a>
+    {% endif %}
+
 </div>
 {% empty %}
-<p>No payments yet</p>
+<p>No payments found.</p>
 {% endfor %}
 
 {% endblock %}

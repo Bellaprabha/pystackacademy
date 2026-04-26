@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-5">
+
+<h2 class="text-white mb-4">📊 Dashboard</h2>
+
+<div class="row">
+
+<div class="col-md-4">
+<div class="card p-3 bg-success text-white">
+<h4>Total Revenue</h4>
+<p>₹{{ total_revenue }}</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3 bg-primary text-white">
+<h4>Success Payments</h4>
+<p>{{ success_count }}</p>
+</div>
+</div>
+
+<div class="col-md-4">
+<div class="card p-3 bg-danger text-white">
+<h4>Failed Payments</h4>
+<p>{{ failed_count }}</p>
+</div>
+</div>
+
+</div>
+
+<!-- ✅ ADD BUTTON HERE -->
+<div class="mt-4">
+    <a href="/payments/export/" class="btn btn-success">
+        📥 Download Excel Report
+    </a>
+</div>
+
+<br>
+
+<a href="/payments/chart/" class="btn btn-info">Monthly Chart</a>
+<a href="/payments/pie-chart/" class="btn btn-warning">Pie Chart</a>
+<a href="/payments/daily-chart/" class="btn btn-secondary">Daily Chart</a>
+
+</div>
+
+{% endblock %}

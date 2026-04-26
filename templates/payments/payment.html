@@ -33,8 +33,10 @@ var options = {
         .then(res => res.text())
         .then(data => {
             if (data === "OK") {
+                alert("Payment Successful ✅");
                 window.location.href = "/payments/success/";
             } else {
+                alert("Payment Failed ❌");
                 window.location.href = "/payments/failure/?course_id={{ course.id }}";
             }
         });
@@ -43,6 +45,7 @@ var options = {
     // ❌ USER CLOSE / FAILURE
     "modal": {
         "ondismiss": function(){
+            alert("Payment Cancelled ❌");
             window.location.href = "/payments/failure/?course_id={{ course.id }}";
         }
     },

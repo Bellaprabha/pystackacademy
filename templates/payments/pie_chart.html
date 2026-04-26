@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>Payment Status</h2>
+<canvas id="pieChart"></canvas>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+new Chart(document.getElementById('pieChart'), {
+    type: 'pie',
+    data: {
+        labels: {{ labels|safe }},
+        datasets: [{
+            data: {{ values|safe }},
+        }]
+    }
+});
+</script>
+
+{% endblock %}

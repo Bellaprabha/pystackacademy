@@ -13,6 +13,27 @@ A Django-based web application for learning Python Full Stack Development.
 - HTML, CSS
 - SQLite (will upgrade to PostgreSQL)
 
+
+# PyStack Academy 🎓
+
+Django-based learning platform with:
+
+- User Authentication (OTP verification)
+- Course Enrollment
+- Razorpay Payment Integration
+- JWT Authentication
+
+## Tech Stack
+- Python, Django
+- SQLite
+- Razorpay
+- Bootstrap
+
+## Features
+- Email OTP verification
+- Payment success/failure handling
+- Payment history
+
 ## Setup
 
 ```bash
