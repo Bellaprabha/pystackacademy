@@ -6,4 +6,5 @@ urlpatterns = [
     path('register/', views.register_view, name='register'),
     path('my-courses/', views.my_courses, name='my_courses'),
     path('logout/', views.logout_view, name='logout'),
+    # path('verify/<uidb64>/<token>/', views.verify_email, name='verify_email'),
 ]

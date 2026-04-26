@@ -9,6 +9,70 @@
 
     <!-- Your CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!-- 🔥 CUSTOM STYLES -->
+    <style>
+    /* Card background */
+    .about-card {
+        background: linear-gradient(135deg, #1f4037, #99f2c8);
+        border-radius: 15px;
+        color: #fff;
+    }
+
+    /* Title */
+    .title-text {
+        color: #ffd700;
+        font-weight: bold;
+    }
+
+    /* Main paragraph */
+    .main-text {
+        font-size: 18px;
+        line-height: 1.6;
+    }
+
+    /* Sub text */
+    .sub-text {
+        font-size: 16px;
+    }
+
+    /* Highlight words */
+    .highlight {
+        color: #ffdd57;
+        font-weight: bold;
+    }
+
+    /* Section headings */
+    .section-title {
+        color: #00e6e6;
+        margin-top: 20px;
+    }
+
+    /* List styling */
+    .list-text li {
+        margin-bottom: 8px;
+    }
+
+    /* Contact */
+    .contact-text {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    /* Offer */
+    .offer-text {
+        color: #ff4d4d;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    /* Hover effect */
+    .about-card:hover {
+        transform: scale(1.01);
+        transition: 0.3s;
+    }
+    </style>
+
 </head>
 
 <body>
@@ -24,7 +88,6 @@
 
     <div class="collapse navbar-collapse" id="navbarNav">
 
-      <!-- ✅ UPDATED NAVBAR -->
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="/about/">About</a></li>

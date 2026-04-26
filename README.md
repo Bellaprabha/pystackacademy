@@ -20,4 +20,5 @@ git clone <repo-url>
 cd pystackacademy
 python -m venv venv
 pip install -r requirements.txt
+source venv/Scripts/activate
 python manage.py runserver

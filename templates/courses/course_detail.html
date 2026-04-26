@@ -31,13 +31,26 @@
             <label>Your Name</label>
             <input type="text" name="name" class="form-control" required>
         </div>
+        <div class="mb-3">
+            <label>Mail ID</label>
+            <input type="text" name="name" class="form-control" required>
+        </div>
 
         <div class="mb-3">
             <label>Phone Number</label>
             <input type="text" name="phone" class="form-control" required>
         </div>
 
-        <button class="btn btn-success w-100">Submit & Enroll</button>
+        <!-- <button class="btn btn-success w-50">Back</button>
+        <button class="btn btn-success w-100">Submit & Enroll</button> -->
+        <div class="d-flex gap-3">
+            <button type="button" class="btn btn-success w-50" onclick="history.back()">
+                Back
+            </button>
+            <button type="submit" class="btn btn-success w-50">
+                Submit & Enroll
+            </button>
+        </div>
     </form>
 
 </div>
