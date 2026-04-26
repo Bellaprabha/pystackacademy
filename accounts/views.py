@@ -49,37 +49,50 @@ def register_view(request):
         )
 
         # store user in session
-        request.session['user_id'] = user.id
+        # request.session['user_id'] = user.id
+        request.session['otp_user'] = user.username
 
         return redirect('verify_otp')
 
     return render(request, 'accounts/register.html')
 
 
+from django.contrib.auth import get_user_model
+User = get_user_model()
+
 def verify_otp(request):
-    if request.method == "POST":
-        username = request.POST.get('username')
-        user_otp = request.POST.get('otp')
+    username = request.session.get('otp_user')
 
+    if not username:
+        return redirect('register')
+
+    try:
         user = User.objects.get(username=username)
-        email_otp = EmailOTP.objects.get(user=user)
+    except User.DoesNotExist:
+        return redirect('register')
 
-        # ❌ Check expiry first
-        if email_otp.is_expired():
+    if request.method == "POST":
+        otp = request.POST.get('otp')
+
+        # email_otp = EmailOTP.objects.get(user=user)
+        email_otp = EmailOTP.objects.filter(user=user).first()
+
+        if not email_otp:
             return render(request, 'accounts/verify_otp.html', {
-                'error': 'OTP expired. Please resend OTP.',
-                'username': username
-            })
+                'error': 'OTP not found'
+        })
 
-        # ✅ Check OTP
-        if user_otp == email_otp.otp:
+        if email_otp.otp == otp:
             user.is_active = True
             user.save()
+
+            # साफ session
+            del request.session['otp_user']
+
             return redirect('login')
         else:
             return render(request, 'accounts/verify_otp.html', {
-                'error': 'Invalid OTP',
-                'username': username
+                'error': 'Invalid OTP'
             })
 
     return render(request, 'accounts/verify_otp.html')

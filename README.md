@@ -1,6 +1,6 @@
 # PyStack Academy
 
-A Django-based web application for learning Python Full Stack Development.
+A Django-based web application for learning Full Stack Development.
 
 ## Features
 - Home Page

@@ -8,6 +8,11 @@ class Course(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     duration = models.CharField(max_length=50, default="3 Months")
     image = models.ImageField(upload_to='courses/', null=True, blank=True)
+    what_you_will_learn = models.TextField(
+        help_text="Add each topic separated by comma",
+        blank=True,
+        null=True
+    )
 
     def __str__(self):
         return self.title

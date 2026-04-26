@@ -12,6 +12,10 @@
     <form method="POST">
         {% csrf_token %}
 
+        <!-- ✅ ADD THIS LINE (VERY IMPORTANT) -->
+        <input type="hidden" name="username" value="{{ username }}">
+
+        <!-- OTP FIELD -->
         <input type="text" name="otp" class="form-control mb-3" placeholder="Enter 6-digit OTP" required>
 
         <button class="btn btn-primary w-100">Verify</button>
